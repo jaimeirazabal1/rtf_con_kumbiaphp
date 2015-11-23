@@ -1,0 +1,33 @@
+<?php View::content() ?>
+<h1>Procedimientos</h1>
+<?php if (!empty($procedimientos)): ?>
+	<table class="table">
+		<thead>
+			<th>Id</th>
+			<th>Archivo</th>
+			<th>Descripción</th>
+			<th>Creado</th>
+			<th></th>
+		</thead>
+		<?php foreach ($procedimientos as $key => $value): ?>
+			<tr>
+				<td><?php echo $value->id ?></td>
+				<td><?php echo Html::link($value->url,"Descargar") ?></td>
+				<td><?php echo $value->descripcion ?></td>
+				<td><?php echo $value->created_at ?></td>
+				<td>
+					<div class="btn-group btn-group-xs" role="group" aria-label="...">
+						<?php echo Html::link("procedimientos/editar/{$value->id}","Editar",'class="btn btn-default btn-xs"') ?>
+						<?php echo Js::link("procedimientos/eliminar/{$value->id}","Eliminar",'Esta Seguro de Eliminar?','btn btn-default btn-xs') ?>
+					</div>
+				</td>
+			</tr>
+		<?php endforeach ?>
+	</table>
+	<?php echo Html::link("procedimientos/agregar","Agregar Nuevo") ?>
+	<?php else: ?>
+		<p>
+			<h3>NO HAY ARCHIVOS AGREGADOS</h3>
+			<?php echo Html::link("procedimientos/agregar","Agregar") ?>
+		</p>
+<?php endif ?>

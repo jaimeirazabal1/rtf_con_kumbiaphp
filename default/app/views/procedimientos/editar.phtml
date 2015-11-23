@@ -1,0 +1,18 @@
+<?php View::content() ?>
+<h1>Editar Procedimiento</h1>
+<?php echo Form::openMultipart() ?>
+    <div class="form-group">
+    	
+	    <label>Ingrese un archivo .rtf:</label>
+
+	    <?php echo Form::file('archivo') ?>
+        <?php echo Form::hidden("procedimientos.id") ?>
+        <?php echo Form::hidden("procedimientos.created_at") ?>
+	    <?php echo Form::hidden('oculto', NULL, '1') //para saber si se envió el form ?>
+    </div>
+    <div class="form-group">
+    	<label>Descripción</label>
+    	<?php echo Form::textarea("procedimientos.descripcion","class='form-control' placeholder='Descripción'") ?>
+    </div>
+	    <?php echo Form::submit('Editar',"class='btn btn-default'") ?>
+<?php echo Form::close() ?>
